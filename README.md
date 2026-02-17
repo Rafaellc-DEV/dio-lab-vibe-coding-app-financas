@@ -1,5 +1,7 @@
-<img width="1536" height="1024" alt="LogoAIS" src="https://github.com/user-attachments/assets/184748c6-2222-498c-92ca-91e9b68ad525" />
 
+<p align="center">
+  <img width="500" height="500" alt="LogoAIS" src="https://github.com/user-attachments/assets/184748c6-2222-498c-92ca-91e9b68ad525" />
+</p>
 
 # 💸 Plano Financeiro AI
 
@@ -24,9 +26,22 @@ Desenvolver o conceito de um aplicativo que utilize **inteligência artificial**
 - Auxiliar o usuário na tomada de decisões financeiras com recomendações inteligentes;
 - Tornar o planejamento financeiro mais fácil, acessível e eficiente.
 
+## 🚩 Aprenzidado/Aprimoramento
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/VibeCoding-000000?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Artificial%20Intelligence-412991?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Prompt%20Engineering-FF4B4B?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Figma-FF7262?style=for-the-badge&logo=figma&logoColor=white"/>
+<img src="https://img.shields.io/badge/Frontend-61DAFB?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/UI%2FUX-000000?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/MVP%20Development-0A66C2?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Conversational%20UI-00A86B?style=for-the-badge"/>
+
+</p>
+
 ---
-
-
 
 ## 📦 Entregas/Relatórios
 <details>
@@ -43,6 +58,7 @@ Cheguei com esse PRD:
 <details>
 <summary>📄 MEU PRD</summary>
 
+```markdown
 Crie um App de Finanças pessoais com base no seguinte PRD (Documento de Requisitos de Produto) Documento de Requisitos de Produto (PRD)
 
 Visão Geral Aplicativo de Organização de Finanças Pessoais com interface conversacional, que ajuda o usuário a controlar gastos, definir metas e aprender sobre investimentos de forma prática e divertida.
@@ -151,6 +167,7 @@ Integração com acessibilidade.
 Validação Inicial (MVP)
 Grupo piloto (10–20 usuários).
 Métricas de sucesso e feedback qualitativo.
+````
 
 </details>
 
@@ -160,9 +177,13 @@ Depois percebi que estava adicionando muitos diferenciais comparado com o que fo
 
 ## 🤖 Primeira versão (Lovable)
 
-Criei a conta no Lovable e coloquei o meu PRD junto com um pequeno prompt (foto abaixo). Depois de um tempo, já foi gerada a primeira versão do meu App como na foto abaixo:
+Criei a conta no Lovable e coloquei o meu PRD junto com um pequeno prompt (foto abaixo). Depois de um tempo, já foi gerada a primeira versão do meu App como em algumas fotos abaixo:
 
-[ESPAÇO PARA FOTO]
+<img width="2011" height="895" alt="image" src="https://github.com/user-attachments/assets/d777768d-0259-48fd-b730-9e774b3a2397" />
+<img width="1993" height="889" alt="image" src="https://github.com/user-attachments/assets/4f5eaaf0-e30b-4440-a941-f66be9207162" />
+<img width="1658" height="875" alt="image" src="https://github.com/user-attachments/assets/908f6ba8-18b5-4af2-9286-f5515dca859f" />
+<img width="1634" height="877" alt="image" src="https://github.com/user-attachments/assets/f3273094-2597-4e42-b609-c57ea727a189" />
+
 
 ### Frontend
 
@@ -204,7 +225,26 @@ Obs: Logo e ícones do protótipo foram todos criados através de IA. Intercalei
 
 Segue abaixo a foto de como finalizaram as telas no Figma no final do Dia 01:
 
-[ESPAÇO PARA FOTO]
+> ### Opção 1
+
+<img width="1736" height="635" alt="image" src="https://github.com/user-attachments/assets/f263832f-7ed0-4305-82a8-a0d0c5436a30" />
+
+> ### Opção 2
+
+<img width="1741" height="637" alt="image" src="https://github.com/user-attachments/assets/9e380e86-30ce-4976-9252-3aca98c6b531" />
+
+> ### 📄 Link
+
+<div align="center">
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+    <a href="https://www.figma.com/design/MFykf8sECiYdHMSaWZEGDD/Finan%C3%A7as?node-id=0-1&t=tSZjp4GeSISPn6zk-1">
+        <img src="https://img.shields.io/badge/Figma-FF7262?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma"/>
+    </a>
+</div>
+
+</div>
+
 
 </details>
 
