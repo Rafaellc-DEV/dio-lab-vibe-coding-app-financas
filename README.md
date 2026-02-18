@@ -5,16 +5,32 @@
 
 # 💸 Plano Financeiro AI
 
-O **Plano Financeiro AI** é um projeto desenvolvido a partir do desafio proposto no bootcamp **CAIXA - Inteligência Artificial na Prática**, realizado na DIO.  
+O **Plano Financeiro AI** é um projeto desenvolvido a partir do desafio proposto no bootcamp **CAIXA - Inteligência Artificial na Prática**, realizado na DIO.
 
-O aplicativo tem como objetivo criar uma experiência simples e inteligente para organização financeira, utilizando inteligência artificial para transformar conversas em ações práticas de planejamento financeiro.
+Mais do que cumprir o desafio, o objetivo foi explorar na prática o uso de IA generativa no desenvolvimento de produto — desde a ideação até a implementação do frontend.
 
+O aplicativo propõe uma experiência simples e inteligente para organização financeira, utilizando inteligência artificial para transformar conversas em ações práticas de planejamento financeiro.
+
+Durante o desenvolvimento, o projeto também se tornou um laboratório pessoal de **vibe coding** — explorando geração de código com IA, refinamento de prompts, troca de ferramentas e validação iterativa até alcançar fidelidade visual e funcional.
+
+---
 
 ## 🧩 Problema
 
-Muitas pessoas têm dificuldade em manter o controle das finanças pessoais porque os aplicativos tradicionais exigem preenchimento manual excessivo, interfaces complexas e pouca personalização.
+Muitas pessoas têm dificuldade em manter o controle das finanças pessoais porque os aplicativos tradicionais exigem:
 
-A proposta é facilitar o controle financeiro utilizando **linguagem natural (LN)**, permitindo que o usuário registre informações e receba orientações através de conversas com uma inteligência artificial, tornando o processo mais acessível, rápido e intuitivo.
+- Preenchimento manual excessivo  
+- Interfaces complexas  
+- Processos pouco intuitivos  
+- Baixa personalização  
+
+O problema não é apenas organização — é fricção.
+
+Quando o processo é trabalhoso, a consistência desaparece.
+
+A proposta do Plano Financeiro AI é reduzir essa fricção utilizando **linguagem natural (LN)**, permitindo que o usuário registre informações e receba orientações através de conversas com uma inteligência artificial, tornando o processo mais acessível, rápido e intuitivo.
+
+---
 
 ## 🎯 Objetivo
 
@@ -25,6 +41,17 @@ Desenvolver o conceito de um aplicativo que utilize **inteligência artificial**
 - Criar planos financeiros personalizados;
 - Auxiliar o usuário na tomada de decisões financeiras com recomendações inteligentes;
 - Tornar o planejamento financeiro mais fácil, acessível e eficiente.
+
+Além disso, o projeto teve como objetivo pessoal:
+
+- Explorar desenvolvimento assistido por IA (vibe coding);
+- Avaliar limites de plataformas de geração automática;
+- Refinar prompts para obter maior controle sobre o resultado;
+- Comparar diferentes ferramentas de IA generativa;
+- Entender quando a automação acelera — e quando assumir o código é necessário.
+
+O resultado foi não apenas um protótipo funcional, mas também um aprendizado prático sobre como integrar IA no fluxo real de desenvolvimento.
+
 
 ## 🚩 Aprenzidado/Aprimoramento
 
@@ -45,7 +72,7 @@ Desenvolver o conceito de um aplicativo que utilize **inteligência artificial**
 
 ## 📦 Entregas/Relatórios
 <details>
-<summary>📅 Dia 01</summary>
+<summary><strong>📅 Dia 01 — Ideia, Exploração e Primeira Versão</strong></summary>
 
 ## 🚀 Início
 
@@ -249,6 +276,219 @@ Segue abaixo a foto de como finalizaram as telas no Figma no final do Dia 01:
 </details>
 
 <details>
+<summary><strong>📅 Dia 02 — Definição do Essencial</strong></summary>
+
+---
+
+O segundo dia foi sobre clareza.
+
+Depois de listar muitas possibilidades no Dia 01, eu reduzi o projeto ao que realmente representava sua essência.
+
+Pergunta central:
+
+> Se eu tivesse que entregar algo funcional, claro e coerente, o que não poderia faltar?
+
+---
+
+## 🎯 Funcionalidades Essenciais Definidas
+
+Mantive apenas o núcleo do produto:
+
+- 📊 Dashboard com visão de Receitas, Despesas e Saldo  
+- 💬 Chat com IA como principal forma de interação  
+- 📋 Extrato organizado  
+- 📈 Gráficos financeiros  
+- 🎯 Metas  
+- 💰 Investimentos  
+
+A ideia era simples:
+o chat registra, o sistema organiza, o dashboard mostra.
+
+Sem distrações.
+Sem excesso.
+
+---
+
+## 🎨 Consolidação das Telas no Figma
+
+Com o escopo fechado, finalizei todas as telas principais no Figma.
+
+O foco foi deixar o projeto único e personalizado antes de levar novamente para o Lovable.
+
+Trabalhei principalmente em:
+
+- Consistência visual  
+- Hierarquia das informações  
+- Clareza no dashboard  
+- Integração visual entre chat e carteira  
+- Paleta verde voltada à identidade financeira  
+
+Agora o projeto não era apenas funcional.
+Ele tinha identidade.
+
+---
+
+<img width="557" height="839" alt="image" src="https://github.com/user-attachments/assets/c27b5115-72f0-4301-b1f1-1f0de7d684ed" />
+<img width="996" height="764" alt="image" src="https://github.com/user-attachments/assets/977d4bff-d8ca-4abe-a5ee-ff23780e5fe9" />
+<img width="1104" height="761" alt="image" src="https://github.com/user-attachments/assets/4fc07e9d-0fae-496f-86ef-3ae3be8cb98f" />
+
+> ### 📄 Link
+
+<div align="center">
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+    <a href="https://www.figma.com/design/MFykf8sECiYdHMSaWZEGDD/Finan%C3%A7as?node-id=0-1&t=tSZjp4GeSISPn6zk-1">
+        <img src="https://img.shields.io/badge/Figma-FF7262?style=for-the-badge&logo=Figma&logoColor=white" alt="Figma"/>
+    </a>
+</div>
+</div>
+
+## 🔄 Próximo Passo
+
+Com todas as telas consolidadas, o objetivo passou a ser implementar essa versão refinada dentro do Lovable.
+
+Dessa vez, não começando do zero.
+Mas guiando a ferramenta com uma visão clara.
+
+---
+
+### 📌 Aprendizado do Dia 02
+
+Produto não é sobre quantidade.
+
+É sobre estrutura.
+
+E estrutura começa com decisão.
+</details>
+
+<details>
+<summary><strong>📅 Dia 03 — Implementação e Mudança de Estratégia</strong></summary>
+
+---
+
+## 🎨 Implementando a Nova Identidade no Lovable
+
+No Dia 03, tentei colocar a nova identidade visual no Lovable, como na foto abaixo, que mostra o prompt que usei junto com as imagens do protótipo anexadas.
+
+<img width="2545" height="925" alt="Captura de tela 2026-02-18 143639" src="https://github.com/user-attachments/assets/ffb74d30-38e9-4f7d-bcf5-a790b7d17812" />
+
+---
+
+O resultado ficou parecido com o meu protótipo do Figma.  
+Embora ainda não estivesse 100% fiel visualmente, tudo o que eu havia planejado estava funcionando.
+
+### ✅ O que já estava funcionando
+
+- Criar metas pelo chat  
+- Criar investimentos  
+- Atualizar o dashboard automaticamente  
+- Interagir normalmente com a estrutura principal  
+
+Ou seja, funcionalmente, estava completo.
+
+---
+
+## 🖥️ Versão Final no Lovable
+
+Segue abaixo como ficou a versão final no Lovable:
+
+<img width="2064" height="878" alt="image" src="https://github.com/user-attachments/assets/0851e1cd-4950-43fd-b2a8-b153aafe55e5" />
+<img width="2040" height="881" alt="image" src="https://github.com/user-attachments/assets/703fcb3e-75ee-432a-b659-c9c5cd81b6ae" />
+
+
+---
+
+## ⚠️ Limitação dos Créditos
+
+Com os créditos chegando ao fim — algo que já estava se tornando um grande incômodo — e ainda insatisfeito com as diferenças visuais entre as telas, resolvi trocar a ferramenta de IA generativa.
+
+Eu já havia feito isso antes em outros testes.
+
+---
+
+## 🔄 Mudança de Estratégia
+
+Então decidi utilizar o Gemini, pedindo que transformasse as telas do meu protótipo diretamente em frontend utilizando HTML, CSS e JavaScript.
+
+Comecei a lapidar uma tela por vez.
+
+Gerava a base.  
+Ajustava.  
+Refinava.  
+Corrigia detalhes.  
+
+Até chegar o mais fiel possível ao meu protótipo.
+
+E o melhor: **sem limitações de créditos.**
+
+---
+
+## 💻 Telas em Código
+
+As telas abaixo já estão em código HTML, CSS e JS.  
+Você pode conferir o código na pasta do projeto.
+
+<img width="1273" height="989" alt="image" src="https://github.com/user-attachments/assets/1ddcb985-8726-4440-b823-50c7a42672f0" />
+<img width="1267" height="933" alt="image" src="https://github.com/user-attachments/assets/8264113c-8cf9-4aa3-a57d-9a23c615e2b8" />
+
+---
+
+No Dia 03, finalizei completamente as telas de Login e Cadastro em código.
+
+As demais telas ficaram para o próximo dia.
+
+➡️ Confira no **Dia 04**.
+
+</details>
+
+<details>
+<summary><strong>📅 Dia 04 — Finalização das Telas e Responsividade</strong></summary>
+
+---
+
+## 💻 Finalização em Código
+
+No Dia 04, finalizei todas as demais telas em código através do Gemini.
+
+Depois de concluir Login e Cadastro no dia anterior, avancei para o restante das páginas, mantendo o objetivo de deixar tudo o mais fiel possível ao protótipo criado no Figma.
+
+---
+
+## 📱 Responsividade
+
+Além de finalizar as telas, me certifiquei de que todas funcionassem corretamente em diferentes tamanhos de tela.
+
+O projeto agora está adaptado para:
+
+- 📱 Mobile  
+- 💻 Desktop  
+- 📲 Diferentes resoluções intermediárias  
+
+A preocupação não era apenas visual, mas também estrutural — garantir que a experiência permanecesse consistente independentemente do dispositivo.
+
+---
+
+## 🖥️ Telas Finalizadas
+
+Segue abaixo todas as telas finalizadas em código:
+
+<img width="735" height="947" alt="image" src="https://github.com/user-attachments/assets/273707a5-1034-4d13-bdfd-56f9ace31598" />
+<img width="1273" height="989" alt="image" src="https://github.com/user-attachments/assets/1ddcb985-8726-4440-b823-50c7a42672f0" />
+<img width="1267" height="933" alt="image" src="https://github.com/user-attachments/assets/8264113c-8cf9-4aa3-a57d-9a23c615e2b8" />
+<img width="1912" height="1109" alt="image" src="https://github.com/user-attachments/assets/c6330518-e7c7-4b2d-b688-8fd4293f4c2b" />
+
+---
+
+### 📌 Conclusão do Dia 04
+
+Com isso, finalizei toda a parte visual em código.
+
+O projeto agora não é apenas um protótipo.  
+Ele possui frontend estruturado, responsivo e alinhado à identidade definida desde o Dia 02.
+
+</details>
+
+<details>
   <summary>🚀 Requisito Entregáveis DIO</summary>
   <br/>
 
@@ -341,11 +581,49 @@ No README do seu repositório, inclua:
 > [!TIP]
 > Publique seu repositório e compartilhe o link na plataforma da DIO! Sua entrega é a prova de que você domina o raciocínio de Vibe Coding, mesmo sem escrever uma única linha de código.
 
+
 ## 💬 Conclusão
 
 Vibe Coding é sobre clareza, curiosidade e criatividade, não sobre perfeição técnica. O verdadeiro objetivo aqui é aprender a pensar junto com a IA, transformando ideias em conceitos reais e enxergando a tecnologia como uma extensão do seu raciocínio criativo. Cada interação é um experimento, quanto mais clara for sua intenção, mais surpreendente será o resultado.
 
 </details>
+
+---
+
+## 🧠 Aprendizados
+
+O desenvolvimento do Plano Financeiro AI foi além da construção de um protótipo funcional.
+
+Ao longo do processo, aprendi que a IA generativa — principalmente ferramentas como o Lovable — são extremamente poderosas para **validação de ideias**.
+
+Elas aceleram a visualização do conceito.
+Permitem testar rapidamente fluxos.
+Transformam PRDs em algo tangível em minutos.
+
+Mas também percebi um ponto importante:
+
+IA generativa é excelente para validar.
+Nem sempre é ideal para finalizar.
+
+Quando o objetivo passa a ser fidelidade visual, identidade própria e controle detalhado da interface, assumir o código se torna um diferencial.
+
+Durante o projeto, aprendi na prática que:
+
+- IA acelera execução, mas não substitui clareza de visão;
+- Prompt bem estruturado é tão importante quanto código bem escrito;
+- Ferramentas diferentes exigem estratégias diferentes;
+- Saber quando usar IA e quando assumir o controle é parte do processo;
+- Produto exige decisão — não apenas geração automática.
+
+O Lovable foi essencial para validar rapidamente a estrutura do aplicativo.  
+Mas a construção final, fiel ao protótipo, veio quando eu combinei IA com desenvolvimento direto em HTML, CSS e JavaScript.
+
+No fim, o maior aprendizado não foi apenas técnico.
+
+Foi entender que IA é acelerador.
+
+Mas visão de produto continua sendo humana.
+
 
 ---
 
