@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Financeiro AI - Login</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --verde-fundo: #24a148;
+            --verde-botao: #435e49;
+            --gradiente-login: linear-gradient(90deg, #6ebc7a, #3b6d4e);
+            --branco: #ffffff;
+            --cinza-input: #fcfcfc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--verde-fundo);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Lado Esquerdo - Branding */
+        .branding {
+            color: var(--branco);
+            flex: 1;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-box img {
+            /* #mudar tamanho da imagem da logo caso precise */
+            width: 350px; 
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .welcome-text h2 {
+            font-size: clamp(2.8rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            max-width: 350px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        /* Lado Direito - Card */
+        .card {
+            background: var(--branco);
+            width: 440px;
+            padding: 45px;
+            border-radius: 45px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .toggle-container {
+            display: flex;
+            border: 1px solid #eee;
+            border-radius: 40px;
+            margin-bottom: 35px;
+            padding: 3px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #444;
+            text-decoration: none; /* Garante que o link não tenha sublinhado */
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: var(--gradiente-login);
+            color: var(--branco);
+            border-radius: 35px;
+        }
+
+        /* Formulário */
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+
+        .form-group .toggle-pass {
+            left: auto;
+            right: 18px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 15px 16px 50px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            background: var(--cinza-input);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .forgot-pass {
+            display: block;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #333;
+            text-decoration: none;
+            margin: -5px 0 35px 0;
+        }
+
+        .btn-entrar {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--verde-botao);
+            color: var(--branco);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-entrar:hover {
+            filter: brightness(1.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 900px) {
+            body { overflow-y: auto; height: auto; padding: 40px 0; }
+            .container { flex-direction: column; text-align: center; }
+            .branding { margin-bottom: 40px; }
+            .logo-box { justify-content: center; }
+            .welcome-text h2 { font-size: 2.8rem; }
+            .welcome-text p { margin: 0 auto; }
+            .card { width: 100%; max-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="branding">
+            <div class="logo-box">
+                <img src="LogoAI.png" alt="Plano Financeiro AI">
+            </div>
+            <div class="welcome-text">
+                <h2>Olá,<br>Bem Vindo!</h2>
+                <p>Seu agente financeiro pessoal com inteligência artificial.</p>
+            </div>
+        </section>
+
+        <div class="card">
+            <div class="toggle-container">
+                <button class="toggle-btn active">Login</button>
+                <a href="cadastro.html" class="toggle-btn">Cadastre-se</a>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="Digite seu e-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Digite sua senha" required>
+                    <i class="fa-solid fa-eye toggle-pass" onclick="togglePassword()"></i>
+                </div>
+
+                <a href="#" class="forgot-pass">Esqueci a senha</a>
+
+                <button type="submit" class="btn-entrar">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Função para mostrar/esconder senha
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const icon = document.querySelector('.toggle-pass');
+            
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

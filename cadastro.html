@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Financeiro AI - Cadastro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --verde-fundo: #24a148;
+            --verde-botao: #435e49;
+            --gradiente-cadastro: linear-gradient(90deg, #6ebc7a, #3b6d4e);
+            --branco: #ffffff;
+            --cinza-input: #fcfcfc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--verde-fundo);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 40px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Lado Esquerdo - Branding (IDÊNTICO AO INDEX) */
+        .branding {
+            color: var(--branco);
+            flex: 1;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-box img {
+            /* #mudar tamanho da imagem da logo */
+            width: 350px; 
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .welcome-text h2 {
+            font-size: clamp(2.8rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .welcome-text p {
+            font-size: 1.1rem;
+            max-width: 350px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        /* Lado Direito - Card (Ajustado para não deslocar o Branding) */
+        .card {
+            background: var(--branco);
+            width: 440px; /* Mantido igual ao index para estabilidade */
+            padding: 45px;
+            border-radius: 45px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            flex-shrink: 0; /* Impede que o card "esprema" o branding */
+        }
+
+        .toggle-container {
+            display: flex;
+            border: 1px solid #eee;
+            border-radius: 40px;
+            margin-bottom: 35px;
+            padding: 3px;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            background: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            color: #444;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .toggle-btn.active {
+            background: var(--gradiente-cadastro);
+            color: var(--branco);
+            border-radius: 35px;
+        }
+
+        /* Grid Nome e Sobrenome menores para caber no card padrão */
+        .name-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 15px; /* Reduzido levemente para o card não ficar alto demais */
+            flex: 1;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 12px 14px 45px;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            background: var(--cinza-input);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-group .toggle-pass {
+            left: auto;
+            right: 15px;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .terms-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 5px 0 25px 0;
+            font-size: 0.8rem;
+            color: #333;
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--verde-botao);
+            color: var(--branco);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Responsividade Mobile */
+        @media (max-width: 900px) {
+            body { overflow-y: auto; height: auto; padding: 40px 0; }
+            .container { flex-direction: column; text-align: center; }
+            .branding { margin-bottom: 40px; }
+            .logo-box { justify-content: center; }
+            .welcome-text h2 { font-size: 2.8rem; }
+            .welcome-text p { margin: 0 auto; }
+            .card { width: 100%; max-width: 400px; }
+            .name-row { flex-direction: column; gap: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <section class="branding">
+            <div class="logo-box">
+                <img src="LogoAI.png" alt="Plano Financeiro AI">
+            </div>
+            <div class="welcome-text">
+                <h2>Olá,<br>Bem Vindo!</h2>
+                <p>Seu agente financeiro pessoal com inteligência artificial.</p>
+            </div>
+        </section>
+
+        <div class="card">
+            <div class="toggle-container">
+                <a href="index.html" class="toggle-btn">Login</a>
+                <button class="toggle-btn active">Cadastre-se</button>
+            </div>
+
+            <form action="index.html">
+                <div class="name-row">
+                    <div class="form-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" placeholder="Sobrenome" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" placeholder="E-mail" required>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Senha" required>
+                    <i class="fa-solid fa-eye toggle-pass" onclick="togglePassword()"></i>
+                </div>
+
+                <div class="terms-group">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">Aceite os termos</label>
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword() {
+            const passInput = document.getElementById('password');
+            const icon = document.querySelector('.toggle-pass');
+            if (passInput.type === 'password') {
+                passInput.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passInput.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+</body>
+</html>

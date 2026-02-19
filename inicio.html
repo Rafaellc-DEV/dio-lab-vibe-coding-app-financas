@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano Financeiro AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-bg: #A6CFB5;
+            --main-bg: #FFFFFF;
+            --verde-receitas: #69D789;
+            --rosa-despesas: #FBCBCB;
+            --verde-escuro-saldo: #405C45;
+            --verde-progress: #0FB54B;
+            --cinza-texto: #666666;
+            --borda-suave: #EAEAEA;
+            --sombra-card: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--main-bg);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 260px;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            flex-shrink: 0;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+            padding-left: 10px;
+        }
+        
+        .logo-container img {
+            width: 140px; 
+            max-width: 100%;
+            display: block;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            flex-grow: 1;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #405C45;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            opacity: 0.85;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            opacity: 1;
+            font-weight: 700;
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .nav-link img { width: 24px; height: 24px; object-fit: contain; }
+
+        .btn-sair {
+            text-decoration: none;
+            color: #D32F2F;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: auto;
+            font-size: 1.1rem;
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+        
+        .btn-sair:hover {
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 0 40px 40px 40px;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 0;
+            margin-bottom: 10px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .user-profile span { font-weight: 600; font-size: 1rem; color: #333; }
+        .user-profile img { width: 45px; height: 45px; border-radius: 50%; }
+
+        h1 {
+            font-weight: 400;
+            color: #444;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        /* CARDS DE RESUMO */
+        .summary-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card-resumo {
+            border-radius: 12px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--sombra-card);
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-resumo h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; }
+        .card-resumo .valor { font-size: 1.4rem; font-weight: 800; }
+        
+        .icon-svg {
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+        }
+
+        .bg-receitas { background-color: var(--verde-receitas); }
+        .bg-despesas { background-color: var(--rosa-despesas); }
+        
+        .bg-saldo { background-color: var(--verde-escuro-saldo); color: #fff; }
+        .bg-saldo h3, .bg-saldo .valor { color: #fff; }
+
+        /* GRID PRINCIPAL (CHAT E WIDGETS) */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 30px;
+            height: 100%;
+        }
+
+        /* WIDGETS GERAIS */
+        .widget-card {
+            background: #fff;
+            border: 1px solid var(--borda-suave);
+            border-radius: 16px;
+            box-shadow: var(--sombra-card);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .widget-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .icon-circle {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background-color: #A6CFB5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .icon-circle img { width: 20px; height: 20px; object-fit: contain; }
+
+        .widget-title h3 { font-size: 1rem; font-weight: 600; color: #444; }
+        .widget-title span { font-size: 0.75rem; color: #22c55e; font-weight: 500; }
+
+        .btn-add {
+            margin-left: auto;
+            background: #E8F5E9;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            color: #2E7D32; font-weight: bold; font-size: 1.2rem;
+            border: none;
+        }
+
+        /* --- CHAT ESPECÍFICO --- */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 600px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #fff;
+        }
+
+        .msg {
+            display: flex;
+            gap: 12px;
+            max-width: 90%;
+            align-items: flex-start;
+        }
+        .msg.user { align-self: flex-end; flex-direction: row-reverse; }
+
+        .avatar-container {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            overflow: hidden;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+        
+        .avatar-robo-bg { background-color: #E29B0F; } 
+        .avatar-user-bg { background-color: #405C45; } 
+
+        .avatar-chat { 
+            width: 20px; 
+            height: 20px; 
+            object-fit: contain;
+        }
+
+        .bubble {
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .bot-bubble {
+            background-color: #F3F4F6;
+            color: #333;
+            border-radius: 0 18px 18px 18px;
+        }
+        
+        .user-bubble {
+            background-color: #405C45;
+            color: #fff;
+            border-radius: 18px 0 18px 18px;
+            text-align: right;
+        }
+
+        .card-inset {
+            background: #fff;
+            border-radius: 12px;
+            padding: 10px 15px;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            width: fit-content;
+        }
+        .icon-inset { 
+            background: #22c55e; border-radius: 50%; width: 32px; height: 32px; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .card-inset-info div:first-child { font-weight: 700; color: #333; font-size: 0.9rem; text-align: left; }
+        .card-inset-info div:last-child { font-size: 0.7rem; color: #999; text-align: left; }
+        .green-text { color: #22c55e !important; }
+
+        /* FOOTER DO CHAT */
+        .chat-footer {
+            padding: 15px 20px;
+            background: #fff;
+            border-top: 1px solid #f5f5f5;
+        }
+
+        .chips-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+
+        .chip {
+            background: #E8F0EB;
+            color: #555;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 1px solid transparent;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .chip:hover { border-color: #A6CFB5; }
+
+        .input-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-wrapper {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            background: #fff;
+            padding: 5px;
+        }
+
+        .input-wrapper input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 12px 15px;
+            font-size: 1rem;
+            background: transparent;
+            color: #555;
+        }
+
+        .btn-plus-input { color: #22c55e; font-size: 1.5rem; padding: 0 10px; cursor: pointer; }
+        
+        .btn-mic-input { 
+            padding: 0 15px; 
+            cursor: pointer; 
+        }
+        .btn-mic-input img {
+            width: 24px;
+        }
+
+        /* 1. BOTÃO DE ENVIAR MENOR, MAS COM ÍCONE GRANDE */
+        .btn-send {
+            background-color: #8EBFA3;
+            width: 55px;  /* Diminuído para 55px */
+            height: 55px; 
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+        .btn-send img { 
+            width: 32px; /* Ajustado para ficar grande dentro da bola menor */
+            margin-left: -3px; 
+        }
+
+
+        /* --- DIREITA --- */
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .widget-content { padding: 20px; }
+
+        .item-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: relative;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+
+        .item-title { font-weight: 700; color: #000; font-size: 1rem; }
+        .item-subtitle { font-size: 0.75rem; color: #888; margin-bottom: 10px; display: block; }
+        
+        .trash-icon { 
+            opacity: 0.6; 
+            cursor: pointer; 
+            width: 20px;
+        }
+
+        .meta-values {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .progress-bg {
+            background-color: #E0E0E0;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        .progress-fill {
+            background-color: var(--verde-progress);
+            height: 100%;
+            width: 0%;
+            border-radius: 6px;
+        }
+
+        .invest-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin: 10px 0 20px 0; 
+            text-align: center;
+        }
+
+        .quick-actions { display: flex; gap: 8px; align-items: center; }
+
+        .quick-actions.centered {
+             justify-content: center;
+             gap: 10px;
+        }
+        
+        .btn-chip-action {
+            background: #f0f0f0; border: none; border-radius: 6px;
+            padding: 6px 10px; font-size: 0.75rem; font-weight: 700;
+            color: #555; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .icon-edit { 
+            margin-left: auto;
+            width: 20px; 
+            opacity: 0.6; 
+            cursor: pointer; 
+        }
+
+        .quick-actions.centered .icon-edit {
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="nav-link active">
+                <img src="img/íconeInicial.png"> Início
+            </a>
+            <a href="#" class="nav-link">
+                <img src="img/iconeExtrato.png"> Extrato
+            </a>
+            <a href="#" class="nav-link">
+                <img src="img/íconeGrafico.png"> Gráficos
+            </a>
+            <a href="#" class="nav-link">
+                <img src="img/íconeMetas.png"> Metas
+            </a>
+            <a href="#" class="nav-link">
+                <img src="img/íconeInvestimento Preto.png"> Investimentos
+            </a>
+        </nav>
+
+        <a href="#" class="btn-sair">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Sair</span>
+        </a>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Rafael&background=A6CFB5&color=fff" alt="Perfil">
+                <span>Olá, Rafael 👋</span>
+            </div>
+        </header>
+
+        <h1>Minha Carteira</h1>
+
+        <div class="summary-row">
+            <div class="card-resumo bg-receitas">
+                <div>
+                    <h3>Receitas</h3>
+                    <div class="valor">R$ 2.000,00</div>
+                </div>
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="19" x2="12" y2="5"></line>
+                    <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+            </div>
+
+            <div class="card-resumo bg-despesas">
+                <div>
+                    <h3>Despesas</h3>
+                    <div class="valor">R$ 200,00</div>
+                </div>
+                <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+            </div>
+
+            <div class="card-resumo bg-saldo">
+                <div>
+                    <h3>Saldo</h3>
+                    <div class="valor">R$ 1.800,00</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            
+            <div class="widget-card chat-container">
+                <div class="widget-header">
+                    <div class="icon-circle">
+                        <img src="img/íconeRoboChat.png">
+                    </div>
+                    <div class="widget-title">
+                        <h3>Plano Financeiro AI</h3>
+                        <span>Online</span>
+                    </div>
+                </div>
+
+                <div class="chat-messages">
+                    <div class="msg user">
+                        <div class="bubble user-bubble">
+                            Recebi 2.000 reais do meu salário
+                        </div>
+                        <div class="avatar-container avatar-user-bg">RA</div>
+                    </div>
+
+                    <div class="msg bot">
+                        <div class="avatar-container avatar-robo-bg">
+                            <img src="img/íconeRoboChat.png" class="avatar-chat">
+                        </div>
+                        <div class="bubble bot-bubble">
+                            Entendi! Registrei R$ 2.000,00 em Salário de Agosto.
+                            <br><br>
+                            Mande seus gastos atualizados, ou faça uma pergunta
+                            
+                            <div class="card-inset">
+                                <div class="icon-inset">
+                                    <svg style="width:18px; color:white;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="19" x2="12" y2="5"></line>
+                                        <polyline points="5 12 12 5 19 12"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="card-inset-info">
+                                    <div>Salário <span class="green-text">+R$ 2.000,00</span></div>
+                                    <div>Receita 02/08/2026</div>
+                                </div>
+                            </div>
+                            <div style="font-size:0.7rem; color:#999; margin-top:5px; text-align:center;">Registrado automaticamente</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-footer">
+                    <div class="chips-row">
+                        <div class="chip">✨ Me ajude com a minha meta</div>
+                        <div class="chip">✨ Essa é minha fatura desse mês</div>
+                    </div>
+                    
+                    <div class="input-area">
+                        <div class="input-wrapper">
+                            <span class="btn-plus-input">+</span>
+                            <input type="text" placeholder="Digite seu gasto ou pergunte algo...">
+                            <div class="btn-mic-input">
+                                <img src="img/microfone.png">
+                            </div>
+                        </div>
+                        <button class="btn-send">
+                            <img src="img/foto_enviar_branco .png">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                
+                <div class="widget-card">
+                    <div class="widget-header">
+                        <div class="icon-circle">
+                            <img src="img/íconeMetasBranca.png">
+                        </div>
+                        <div class="widget-title">
+                            <h3>Metas</h3>
+                        </div>
+                        <button class="btn-add">+</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="item-card">
+                            <div class="item-header">
+                                <span class="item-title">Carro</span>
+                                <img src="img/íconeLixeira.png" class="trash-icon">
+                            </div>
+                            <span class="item-subtitle">Prazo: 01/01/2028</span>
+                            <div class="meta-values">
+                                <span>R$ 0,00</span>
+                                <span>R$ 50.000,00</span>
+                            </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: 2%;"></div>
+                            </div>
+                            <div class="quick-actions">
+                                <button class="btn-chip-action">+R$ 50</button>
+                                <button class="btn-chip-action">+R$ 100</button>
+                                <button class="btn-chip-action">+R$ 200</button>
+                                <img src="img/íconeLapis.png" class="icon-edit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget-card">
+                    <div class="widget-header">
+                        <div class="icon-circle">
+                            <img src="img/iconeInvestimentosBranco.png">
+                        </div>
+                        <div class="widget-title">
+                            <h3>Investimentos</h3>
+                        </div>
+                        <button class="btn-add">+</button>
+                    </div>
+                    <div class="widget-content">
+                        <div class="item-card">
+                            <div class="item-header">
+                                <span class="item-title">Reserva de Emergência</span>
+                                <img src="img/íconeLixeira.png" class="trash-icon">
+                            </div>
+                            <span class="item-subtitle">CDB Liq. Diária 100% CDI</span>
+                            <div class="invest-value">R$ 1.000,00</div>
+                            <div class="quick-actions centered">
+                                <button class="btn-chip-action">+R$ 50</button>
+                                <button class="btn-chip-action">+R$ 100</button>
+                                <button class="btn-chip-action">+R$ 200</button>
+                                <img src="img/íconeLapis.png" class="icon-edit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</body>
+</html>
